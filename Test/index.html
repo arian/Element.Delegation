@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>Mootools Element.Delegation</title>
+
+<link  href="style.css" rel="stylesheet" type="text/css" media="screen" />
+
+<script src="mootools-1.2.4-core.js" type="text/javascript"></script>
+<script src="../Source/Element.Delegation.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+window.addEvent('domready',function(){
+	
+	document.body.addDelegates({
+		'click': {
+			'a': function(e){
+				e.stop();
+				alert('hi');
+			}
+		},
+		'mouseover': {
+			'a.removeClick': function(){
+				console.log('mouseover');
+			}
+		}
+	});	
+	
+	document.body.addDelegate('click','a.removeClick',function(e){
+		e.stop();
+		alert('Remove me!');
+		document.body.removeDelegate('click','a');
+	});
+	
+});
+
+</script>
+
+
+</head>
+<body>
+
+<h1>Mootools Element.Delegation</h1>
+
+<p>
+	Array.Math is a collection of calculation with arrays.
+	You can do all kind of things with arrays. You can see them as 
+	date for statistic analysis, you can see them as vectors and matrices
+	for liniear algebra, or just use them for calculus like add, substract and
+	products or more advanced calculus with sequences.
+</p>
+
+<h2>Demo</h2>
+
+<a href="#first">Click</a>
+<a href="#second">Click</a>
+<a href="#third">Click</a>
+<a href="#last">Click</a>
+
+<a class="removeClick" href="#">Remove click</a>
+
+</body>
+</html>
