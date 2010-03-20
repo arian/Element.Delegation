@@ -4,8 +4,6 @@ Simpler Element.Delegation
 This extension is a another fresh look at event delegation. No addEvent('relay(a)',fn) kind of things, but a more simple API
 
 
-![Screenshot](http://github.com/sixtyseconds/EventDelegation/raw/master/screen.png)
-
 How to use
 ----------
 
