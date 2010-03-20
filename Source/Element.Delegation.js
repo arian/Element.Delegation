@@ -1,4 +1,10 @@
 
+Element.Properties.delegates = {
+	set: function(delegates){
+		this.addDelegates(delegates);
+	}
+};
+
 Element.implement({
 	
 	addDelegate: function(type,selector,fn){
