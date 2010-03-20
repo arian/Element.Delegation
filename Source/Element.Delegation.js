@@ -1,23 +1,22 @@
 
-
-
 Element.implement({
 	
 	addDelegate: function(type,selector,fn){
 		var elmt = document.id(this);
-		
-		var stores = elmt.retrieve('delegates') || {};
-		if(stores[type] && stores[type][selector]) return elmt;
-		if(!stores[type]) stores[type] = {};
-		
-		stores[type][selector] = function(e){
+				
+		var delegatefn = function(e){
 			var target = document.id(e.target);
 			elmt.getElements(selector).each(function(el){
 				if(el == target) fn(e);
 			});
 		};
+		
+		var stores = elmt.retrieve('delegates') || {};
+		if(!stores[type]) stores[type] = {};
+		if(!stores[type][selector]) stores[type][selector] = [];
+		stores[type][selector].push([delegatefn,fn]);
 
-		return elmt.addEvent(type,stores[type][selector]).store('delegates',stores);
+		return elmt.addEvent(type,delegatefn).store('delegates',stores);
 	},
 	
 	addDelegates: function(types){
@@ -29,15 +28,19 @@ Element.implement({
 		return this;
 	},
 	
-	removeDelegate: function(type,selector){
+	removeDelegate: function(type,selector,fn){
 		var elmt = document.id(this);
 		
 		var stores = this.retrieve('delegates') || {};
 		if(!stores[type] || !stores[type][selector]) return elmt;
 		
-		elmt.removeEvent(type,stores[type][selector]);
-		stores[type][selector] = null;
-		
+		for(var i = 0; i < stores[type][selector].length; i++){
+			if(stores[type][selector][i][1] === fn){
+				elmt.removeEvent(type,stores[type][selector][i][0]);
+				stores[type][selector][i] = null;
+				return elmt;
+			}
+		}
 		return elmt;
 	},
 	
