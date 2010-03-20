@@ -3,6 +3,7 @@ Simpler Element.Delegation
 
 This extension is a another fresh look at event delegation. No addEvent('relay(a)',fn) kind of things, but a more simple API
 
+![Screenshot](http://github.com/arian/Element.Delegation/raw/master/screenshot.png)
 
 How to use
 ----------
