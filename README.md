@@ -47,16 +47,16 @@ This is the most simple example how you can use this Element.Delegation
 
 	#JS
 	var fn = function(){};
-	document.id.addDelegate('click','a',fn);	
-	document.id.removeDelegate('click','a',fn);
+	document.id('myElement').addDelegate('click','a',fn);	
+	document.id('myElement').removeDelegate('click','a',fn);
 
 
 ### Remove more than one at the time
 
 	#JS
 	var fn = function(){};
-	document.id.addDelegate('click','a',fn);	
-	document.id.removeDelegate({
+	document.id('myElement').addDelegate('click','a',fn);	
+	document.id('myElement').removeDelegate({
 		'click': {
 			'a': fn
 		}
