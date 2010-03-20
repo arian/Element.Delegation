@@ -2,6 +2,6 @@ name: Element.Delegates
 author: astolwijk
 current: 0.1
 category: Native
-tags: [Events,Delegation,Elements]
-#demo: http://www.aryweb.nl/projects/animateimage/
-#docs: http://github.com/arian/animateImage/blob/master/README.md
+tags: [Event,Events,Delegation,Elements]
+demo: http://www.aryweb.nl/projects/eventdelegation/
+docs: http://github.com/arian/Element.Delegation/blob/master/README.md
