@@ -14,12 +14,14 @@
 
 window.addEvent('domready',function(){
 	
+	var clickLink = function(e){
+		e.stop();
+		alert('hi');
+	};
+	
 	document.body.addDelegates({
 		'click': {
-			'a': function(e){
-				e.stop();
-				alert('hi');
-			}
+			'a': clickLink
 		},
 		'mouseover': {
 			'a.removeClick': function(){
@@ -31,8 +33,21 @@ window.addEvent('domready',function(){
 	document.body.addDelegate('click','a.removeClick',function(e){
 		e.stop();
 		alert('Remove me!');
-		document.body.removeDelegate('click','a');
+		document.body.removeDelegate('click','a',clickLink);
 	});
+	
+	new Element('div',{
+		text: 'Hi',
+		delegates: {
+			'click': {
+				'p': function(){
+					alert('hello');
+				}
+			}
+		}
+	})
+		.inject(document.body)
+		.adopt(new Element('p',{text: 'Click me'}));
 	
 });
 
