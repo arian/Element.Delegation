@@ -1,3 +1,21 @@
+/*
+---
+description: Simpler event delegation for MooTools.
+ 
+license: MIT-style
+ 
+authors:
+- Arian Stolwijk
+ 
+requires:
+- core/1.2.4: Element.Event
+- core/1.2.4: Selectors
+ 
+provides: [Element.addDelegate, Element.addDelegates, Element.removeDelegate, Element.removeDelegates,Element.Properties.delegates.set]
+ 
+...
+*/
+
 
 Element.Properties.delegates = {
 	set: function(delegates){
@@ -52,9 +70,9 @@ Element.implement({
 	
 	removeDelegates: function(types){
 		for(var type in types){
-			$splat(types[type]).each(function(selector){
-				this.removeDelegate(type,selector);
-			}.bind(this));
+			for(var selector in types[type]){
+				this.removeDelegate(type,selector,types[type][selector]);
+			}
 		}
 		return this;		
 	}
