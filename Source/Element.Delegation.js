@@ -31,7 +31,7 @@ Element.implement({
 		var delegatefn = function(e){
 			var target = document.id(e.target);
 			elmt.getElements(selector).each(function(el){
-				if(el == target) fn(e);
+				if(el == target) fn.run(e,el);
 			});
 		};
 		
