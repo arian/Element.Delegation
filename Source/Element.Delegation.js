@@ -33,6 +33,7 @@ Element.implement({
 			elmt.getElements(selector).each(function(el){
 				if(el === target) fn.apply(el,[e]);
 			});
+			console.log(elmt.retrieve('delegates'));
 		};
 		
 		var stores = elmt.retrieve('delegates') || {};
@@ -57,13 +58,12 @@ Element.implement({
 		var stores = this.retrieve('delegates');
 		if(!stores[type] || !stores[type][selector]) return elmt;
 		
-		for(var i = 0; i < stores[type][selector].length; i++){
-			if(stores[type][selector][i][1] === fn){
-				elmt.removeEvent(type,stores[type][selector][i][0]);
+		$each(stores[type][selector],function(fns,i){
+			if(fns[1] === fn){
+				elmt.removeEvent(type,fns[0]);
 				delete stores[type][selector][i];
-				return elmt;
 			}
-		}
+		});
 		return elmt;
 	},
 	
