@@ -34,7 +34,6 @@ Element.implement({
 			elmt.getElements(selector).each(function(el){
 				if(el === target) fn.apply(el,[e]);
 			});
-			console.log(elmt.retrieve('delegates'));
 		};
 		
 		var stores = elmt.retrieve('delegates') || {};
