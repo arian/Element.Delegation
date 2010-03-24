@@ -54,7 +54,7 @@ Element.implement({
 	removeDelegate: function(type,selector,fn){
 		var elmt = document.id(this);
 		
-		var stores = this.retrieve('delegates') || {};
+		var stores = this.retrieve('delegates');
 		if(!stores[type] || !stores[type][selector]) return elmt;
 		
 		for(var i = 0; i < stores[type][selector].length; i++){
