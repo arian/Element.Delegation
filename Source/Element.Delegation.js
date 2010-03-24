@@ -45,9 +45,8 @@ Element.implement({
 	
 	addDelegates: function(types){
 		for(var type in types){
-			for(var selector in types[type]){
+			for(var selector in types[type])
 				this.addDelegate(type,selector,types[type][selector]);
-			}
 		}
 		return this;
 	},
@@ -61,7 +60,7 @@ Element.implement({
 		for(var i = 0; i < stores[type][selector].length; i++){
 			if(stores[type][selector][i][1] === fn){
 				elmt.removeEvent(type,stores[type][selector][i][0]);
-				stores[type][selector][i] = null;
+				delete stores[type][selector][i];
 				return elmt;
 			}
 		}
@@ -70,9 +69,8 @@ Element.implement({
 	
 	removeDelegates: function(types){
 		for(var type in types){
-			for(var selector in types[type]){
+			for(var selector in types[type])
 				this.removeDelegate(type,selector,types[type][selector]);
-			}
 		}
 		return this;		
 	}
