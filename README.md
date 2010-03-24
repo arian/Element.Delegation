@@ -62,3 +62,16 @@ This is the most simple example how you can use this Element.Delegation
 		}
 	});
 
+
+### Add delegates to a new Element
+
+	#JS
+	new Element('div',{
+		delegates: {
+			'click': {
+				'input:checked': function(e){
+					// Your code
+				}
+			}
+		}
+	});
