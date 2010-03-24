@@ -1,6 +1,6 @@
 name: Element.Delegates
 author: astolwijk
-current: 0.1
+current: 0.2
 category: Native
 tags: [Event,Events,Delegation,Elements]
 demo: http://www.aryweb.nl/projects/eventdelegation/
