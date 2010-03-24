@@ -8,8 +8,9 @@ authors:
 - Arian Stolwijk
  
 requires:
-- core/1.2.4: Element.Event
-- core/1.2.4: Selectors
+  core/1.2.4:
+  - Element.Event
+  - Selectors
  
 provides: [Element.addDelegate, Element.addDelegates, Element.removeDelegate, Element.removeDelegates,Element.Properties.delegates.set]
  
